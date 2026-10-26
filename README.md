@@ -1,4 +1,4 @@
-# Data Analyst Internship Portfolio — [Your Name]
+# Data Analyst Internship Portfolio — Shubhanshu Rajawat
 
 **ApexPlanet Data Analytics Internship** · Python · SQL · Power BI · Statistics
 
@@ -6,7 +6,7 @@
 
 **Live portfolio site:** https://YOUR-USERNAME.github.io/YourName-DataAnalyst-Internship-Portfolio/
 **Final presentation deck:** [`deck/ApexPlanet_Final_Presentation.pptx`](deck/ApexPlanet_Final_Presentation.pptx)
-**LinkedIn walkthrough video:** [add link]
+
 
 ---
 
@@ -16,10 +16,10 @@ One dataset, four tasks, each building on the last. Every task answers the quest
 
 | # | Task | The question it answered | Headline result | Repository |
 |---|---|---|---|---|
-| 1 | **Data Immersion & Wrangling** | Can this data be trusted? | 1,000 rows cleaned with zero data invented or dropped; 52 ambiguous Customer IDs flagged, not guessed | [Task 1 repo](https://github.com/YOUR-USERNAME/apexplanet-task1-data-wrangling) |
-| 2 | **EDA & Business Intelligence** | What does the data look like? | Revenue is right-skewed (mean ₹1,39,399 vs median ₹1,08,594): a few large orders pull the average up | [Task 2 repo](https://github.com/YOUR-USERNAME/apexplanet-task2-eda-bi) |
-| 3 | **Deep-Dive Analysis & Dashboarding** | Where does revenue actually come from? | Only 5.5% of customers ever reorder → RFM segmentation → one segment drives 71% of revenue | [Task 3 repo](https://github.com/YOUR-USERNAME/apexplanet-task3-deep-dive-dashboard) |
-| 4 | **Data Storytelling & Statistical Validation** | Is the finding real, and what should the business do? | Welch's t-test: t = 29.22, p < 0.0001, Cohen's d = 1.94 → targeted win-back campaign | [Task 4 repo](https://github.com/YOUR-USERNAME/apexplanet-task4-storytelling-validation) |
+| 1 | **Data Immersion & Wrangling** | Can this data be trusted? | 1,000 rows cleaned with zero data invented or dropped; 52 ambiguous Customer IDs flagged, not guessed | [Task 1 repo](https://github.com/Shubhanshu-Rajawat/apexplanet-task1-data-wrangling) |
+| 2 | **EDA & Business Intelligence** | What does the data look like? | Revenue is right-skewed (mean ₹1,39,399 vs median ₹1,08,594): a few large orders pull the average up | [Task 2 repo](https://github.com/Shubhanshu-Rajawat/apexplanet-task2-eda-bi) |
+| 3 | **Deep-Dive Analysis & Dashboarding** | Where does revenue actually come from? | Only 5.5% of customers ever reorder → RFM segmentation → one segment drives 71% of revenue | [Task 3 repo](https://github.com/Shubhanshu-Rajawat/apexplanet-task3-deep-dive-dashboard) |
+| 4 | **Data Storytelling & Statistical Validation** | Is the finding real, and what should the business do? | Welch's t-test: t = 29.22, p < 0.0001, Cohen's d = 1.94 → targeted win-back campaign | [Task 4 repo](https://github.com/Shubhanshu-Rajawat/apexplanet-task4-storytelling-validation) |
 
 ---
 
@@ -91,7 +91,7 @@ An interactive **Power BI dashboard** with a segment slicer lets any stakeholder
 ## Repository Layout
 
 ```
-YourName-DataAnalyst-Internship-Portfolio/
+Shubhanshu-Rajawat-DataAnalyst-Internship-Portfolio/
 ├── README.md                  ← this page
 ├── index.html                 ← GitHub Pages site
 ├── deck/
