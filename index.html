@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[Your Name] — Data Analyst Internship Portfolio</title>
+<meta name="description" content="Four tasks, one dataset: from raw sales data to a statistically validated business recommendation. ApexPlanet Data Analytics Internship.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1E2761;
+    --paper: #F6F7FB;
+    --muted: #565D7C;
+    --rule: #D3D8E8;
+    --soft: #A9B1D3;
+    --dot: #EB6834;
+    --accent: #B8430F;
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --sans: "Public Sans", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--dot);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---------- top bar ---------- */
+  .topbar { padding: 22px 0; border-bottom: 1px solid var(--rule); }
+  .topbar .wrap { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .name { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; }
+  .topbar nav { display: flex; gap: 22px; flex-wrap: wrap; font-size: .95rem; }
+  .topbar nav a { text-decoration: none; color: var(--muted); }
+  .topbar nav a:hover { color: var(--ink); text-decoration: underline; }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 64px 0 40px; }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(2.2rem, 5.2vw, 3.9rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    max-width: 17ch;
+    margin: 0 0 20px;
+  }
+  .lede { max-width: 56ch; color: var(--muted); margin: 0 0 40px; font-size: 1.15rem; }
+
+  .field {
+    border-top: 1px solid var(--rule);
+    padding-top: 22px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+  }
+  .field svg { width: 100%; height: auto; display: block; }
+  .field circle { transition: r .55s cubic-bezier(.3,.7,.2,1), fill .3s; }
+  .field .side { padding-top: 4px; }
+  .toggle { display: inline-flex; border: 1px solid var(--ink); border-radius: 999px; overflow: hidden; margin-bottom: 22px; }
+  .toggle button {
+    font: inherit; font-size: .95rem; font-weight: 500;
+    background: transparent; color: var(--ink);
+    border: 0; padding: 9px 18px; cursor: pointer;
+  }
+  .toggle button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+  .readout { font-family: var(--serif); font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; margin: 0 0 12px; min-height: 2.4em; }
+  .readout b { color: var(--accent); font-weight: 600; }
+  .key { font-size: .92rem; color: var(--muted); margin: 0; }
+  .key i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: baseline; }
+
+  /* ---------- sections ---------- */
+  section { padding: 56px 0; border-top: 1px solid var(--rule); }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.15rem); line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 8px; }
+  .sub { color: var(--muted); margin: 0 0 32px; max-width: 60ch; }
+
+  /* task sequence (a real sequence, so numbered) */
+  ol.tasks { list-style: none; margin: 0; padding: 0; counter-reset: t; }
+  ol.tasks li {
+    counter-increment: t;
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1.1fr) minmax(0, 1.2fr) auto;
+    gap: 8px 28px;
+    padding: 22px 0;
+    border-top: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  ol.tasks li:last-child { border-bottom: 1px solid var(--rule); }
+  ol.tasks li::before { content: counter(t); font-family: var(--serif); font-size: 2rem; color: var(--soft); line-height: 1; }
+  .t-name { font-weight: 600; margin: 0; }
+  .t-q { margin: 2px 0 0; color: var(--muted); font-size: .98rem; }
+  .t-res { margin: 0; }
+  .t-link { font-size: .95rem; white-space: nowrap; }
+
+  /* deck slides */
+  .slides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; margin-top: 8px; }
+  figure { margin: 0; }
+  figure img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); }
+  figcaption { font-size: .95rem; color: var(--muted); margin-top: 10px; }
+  .dl { margin-top: 28px; }
+
+  /* test results */
+  dl.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 28px 0 0; border-top: 1px solid var(--ink); }
+  dl.stats div { padding: 16px 20px 4px 0; }
+  dl.stats dt { font-size: .92rem; color: var(--muted); }
+  dl.stats dd { margin: 4px 0 0; font-family: var(--serif); font-size: 1.7rem; line-height: 1.15; }
+  dl.stats dd small { display: block; font-family: var(--sans); font-size: .85rem; color: var(--muted); margin-top: 4px; }
+
+  /* prose columns */
+  .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 56px; }
+  .cols p { margin: 0 0 18px; max-width: 52ch; }
+  .cols strong { font-weight: 600; }
+
+  dl.skills { margin: 0; display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 0 32px; }
+  dl.skills dt { font-weight: 600; padding: 12px 0; border-top: 1px solid var(--rule); }
+  dl.skills dd { margin: 0; padding: 12px 0; border-top: 1px solid var(--rule); color: var(--muted); }
+
+  ul.honest { margin: 0; padding-left: 1.1em; max-width: 68ch; }
+  ul.honest li { margin-bottom: 12px; }
+
+  footer { padding: 48px 0 64px; border-top: 1px solid var(--ink); }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 12px 0 0; }
+  footer p { margin: 0; }
+
+  @media (max-width: 860px) {
+    .field { grid-template-columns: 1fr; gap: 24px; }
+    ol.tasks li { grid-template-columns: 40px minmax(0, 1fr); }
+    ol.tasks li > :nth-child(n+2) { grid-column: 2; }
+    .slides, .cols { grid-template-columns: 1fr; }
+    dl.stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    dl.skills { grid-template-columns: 1fr; }
+    dl.skills dt { padding-bottom: 0; }
+    dl.skills dd { border-top: 0; padding-top: 2px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .field circle { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <span class="name">[Your Name]</span>
+    <nav aria-label="Primary">
+      <a href="#tasks">The four tasks</a>
+      <a href="#deck">Final deck</a>
+      <a href="#learned">What I learned</a>
+      <a href="https://github.com/YOUR-USERNAME">GitHub</a>
+      <a href="https://www.linkedin.com/in/YOUR-PROFILE">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="hero">
+      <h1>I find where the revenue comes from, then check it&rsquo;s real.</h1>
+      <p class="lede">[Your Name], Data Analytics intern at ApexPlanet. One dataset of 1,000 sales orders, taken from raw file to a tested business recommendation in four tasks.</p>
+
+      <div class="field">
+        <svg id="dots" viewBox="0 0 516 276" role="img" aria-label="947 dots, one per customer. 427 are highlighted: the High-Value One-Timer segment."></svg>
+        <div class="side">
+          <div class="toggle" role="group" aria-label="Choose how to size the dots">
+            <button type="button" id="b-cust" aria-pressed="true">Customers</button>
+            <button type="button" id="b-rev" aria-pressed="false">Revenue</button>
+          </div>
+          <p class="readout" id="readout" aria-live="polite"><b>427</b> of 947 customers, <b>45%</b> of the base.</p>
+          <p class="key"><i style="background:var(--dot)"></i>High-Value One-Timers: bought once, spent big<br>
+            <i style="background:var(--soft)"></i>Everyone else</p>
+          <p class="key" id="note" style="margin-top:14px">Each dot is one customer. In Revenue view, dot area is the average spend of that customer&rsquo;s segment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="tasks">
+    <div class="wrap">
+      <h2>Four tasks, each answering the last one&rsquo;s question</h2>
+      <p class="sub">Every repository has its own code, data and write-up.</p>
+      <ol class="tasks">
+        <li>
+          <div><p class="t-name">Data Immersion &amp; Wrangling</p><p class="t-q">Can this data be trusted?</p></div>
+          <p class="t-res">1,000 rows cleaned with nothing invented or deleted. 52 ambiguous Customer IDs flagged instead of guessed.</p>
+          <a class="t-link" href="https://github.com/YOUR-USERNAME/apexplanet-task1-data-wrangling">Task 1 repository</a>
+        </li>
+        <li>
+          <div><p class="t-name">EDA &amp; Business Intelligence</p><p class="t-q">What does the data look like?</p></div>
+          <p class="t-res">Revenue is right-skewed: mean ₹1,39,399 against a median of ₹1,08,594. Seven SQL business questions answered.</p>
+          <a class="t-link" href="https://github.com/YOUR-USERNAME/apexplanet-task2-eda-bi">Task 2 repository</a>
+        </li>
+        <li>
+          <div><p class="t-name">Deep-Dive Analysis &amp; Dashboard</p><p class="t-q">Where does revenue actually come from?</p></div>
+          <p class="t-res">Only 5.5% of customers ever reorder, so I segmented by RFM instead. One segment drives 71% of revenue. Power BI dashboard with a segment slicer.</p>
+          <a class="t-link" href="https://github.com/YOUR-USERNAME/apexplanet-task3-deep-dive-dashboard">Task 3 repository</a>
+        </li>
+        <li>
+          <div><p class="t-name">Storytelling &amp; Statistical Validation</p><p class="t-q">Is the finding real, and what should the business do?</p></div>
+          <p class="t-res">Welch&rsquo;s t-test confirms the gap is not chance. Recommendation: a targeted win-back campaign for this one segment.</p>
+          <a class="t-link" href="https://github.com/YOUR-USERNAME/apexplanet-task4-storytelling-validation">Task 4 repository</a>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="deck">
+    <div class="wrap">
+      <h2>The final presentation</h2>
+      <p class="sub">Nine slides for a business audience. It opens with the answer, then shows the evidence.</p>
+      <div class="slides">
+        <figure>
+          <img src="assets/slide-6.jpg" alt="Slide 6: bar chart of revenue by customer segment. High-Value One-Timers lead with 9.86 crore rupees, 71% of revenue." width="1067" height="600" loading="lazy">
+          <figcaption>The finding: 427 customers produce more revenue than every repeat and loyal customer combined.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/slide-7.jpg" alt="Slide 7: hypothesis test results. t-statistic 29.22, p-value below 0.0001, Cohen's d 1.94." width="1067" height="600" loading="lazy">
+          <figcaption>The proof: a large, statistically significant gap in order value.</figcaption>
+        </figure>
+      </div>
+      <p class="dl"><a href="deck/ApexPlanet_Final_Presentation.pptx">Download the full deck (PowerPoint)</a></p>
+
+      <dl class="stats">
+        <div><dt>t-statistic</dt><dd>29.22<small>Welch&rsquo;s t-test, one-tailed</small></dd></div>
+        <div><dt>p-value</dt><dd>&lt; 0.0001<small>threshold was 0.05</small></dd></div>
+        <div><dt>Cohen&rsquo;s d</dt><dd>1.94<small>a large effect is 0.8 or more</small></dd></div>
+        <div><dt>95% interval on the gap</dt><dd>₹1.49–1.70 lakh<small>extra spend per order</small></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="learned">
+    <div class="wrap">
+      <h2>What I learned</h2>
+      <p class="sub">Six things the project taught me that a tutorial wouldn&rsquo;t.</p>
+      <div class="cols">
+        <div>
+          <p><strong>Don&rsquo;t invent data to make it tidy.</strong> A missing city became &ldquo;Unknown&rdquo; and a Customer ID with two names was flagged. Nothing downstream rests on a guess.</p>
+          <p><strong>Let results redirect the question.</strong> A 5.5% repeat rate ended my plan for retention analysis and led to a better one.</p>
+          <p><strong>Check caveats before reporting a number.</strong> A &ndash;93.4% monthly &ldquo;drop&rdquo; was only a partial month.</p>
+        </div>
+        <div>
+          <p><strong>Significance is not importance.</strong> The p-value says it isn&rsquo;t chance. The effect size and interval say whether it&rsquo;s big enough to act on.</p>
+          <p><strong>Make it reproducible.</strong> When my working environment reset, I rebuilt the whole pipeline from the raw file and matched the earlier figures exactly.</p>
+          <p><strong>Lead with the answer.</strong> Stakeholders need the &ldquo;so what&rdquo; first and the method second.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2 style="margin-bottom:28px">Skills demonstrated</h2>
+      <dl class="skills">
+        <dt>Data wrangling</dt><dd>Missing-value strategy, duplicate handling, data-quality profiling, feature engineering in Pandas</dd>
+        <dt>SQL</dt><dd>Aggregation, grouping, multi-table joins, framing business questions (SQLite)</dd>
+        <dt>Exploratory analysis</dt><dd>Univariate statistics, correlation, skew and outlier checks, Matplotlib and Seaborn</dd>
+        <dt>Segmentation</dt><dd>RFM scoring and business-rule segment design</dd>
+        <dt>Statistics</dt><dd>Hypothesis formulation, Levene&rsquo;s test, Welch&rsquo;s t-test, confidence intervals, Cohen&rsquo;s d</dd>
+        <dt>BI and dashboards</dt><dd>KPI definition, Power BI Desktop, slicer-driven reports</dd>
+        <dt>Communication</dt><dd>Data storytelling, stakeholder deck design, video walkthrough</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="limits">
+    <div class="wrap">
+      <h2>What this analysis can&rsquo;t tell you</h2>
+      <p class="sub">Stated plainly, because a finding is only as good as its caveats.</p>
+      <ul class="honest">
+        <li><strong>One year of data.</strong> Some &ldquo;one-time&rdquo; customers may simply not have reordered yet. The recommendation includes re-running the segmentation each quarter.</li>
+        <li><strong>The test is partly circular.</strong> The segment is defined partly by total spend, so a higher order value is somewhat expected. I therefore also tested two variables not used to build it. Both differ significantly: quantity (7.0 against 4.3 units) and unit price (₹33,892 against ₹19,223), each with p &lt; 0.0001.</li>
+        <li><strong>Association, not cause.</strong> The data shows where revenue sits, not why these customers don&rsquo;t return. The win-back campaign should run as a test with a control group.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="name">[Your Name]</p>
+    <p>Built during the ApexPlanet Data Analytics Internship. Feedback is welcome.</p>
+    <p class="links">
+      <a href="https://github.com/YOUR-USERNAME/YourName-DataAnalyst-Internship-Portfolio">Source for this site</a>
+      <a href="https://github.com/YOUR-USERNAME">GitHub</a>
+      <a href="https://www.linkedin.com/in/YOUR-PROFILE">LinkedIn</a>
+      <a href="mailto:you@example.com">Email</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var TOTAL = 947, HV = 427, COLS = 43, CELL = 12;
+  var R_CUST = 3.7;                 // equal dots: area = headcount
+  var R_HV = 5.0;                   // revenue view: area proportional to segment average spend
+  var R_REST = 5.0 / Math.sqrt((9.86e7 / 427) / (4.08e7 / 520)); // = ~2.9
+
+  // deterministic shuffle so the orange dots are scattered, and stay put between visits
+  var seed = 947;
+  function rnd() { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; }
+  var flags = [];
+  for (var i = 0; i < TOTAL; i++) flags.push(i < HV);
+  for (var j = flags.length - 1; j > 0; j--) {
+    var k = Math.floor(rnd() * (j + 1)), t = flags[j]; flags[j] = flags[k]; flags[k] = t;
+  }
+
+  var svg = document.getElementById('dots');
+  var NS = 'http://www.w3.org/2000/svg';
+  var circles = [];
+  flags.forEach(function (hv, n) {
+    var c = document.createElementNS(NS, 'circle');
+    c.setAttribute('cx', (n % COLS) * CELL + CELL / 2);
+    c.setAttribute('cy', Math.floor(n / COLS) * CELL + CELL / 2);
+    c.setAttribute('r', R_CUST);
+    c.setAttribute('fill', hv ? '#EB6834' : '#A9B1D3');
+    svg.appendChild(c);
+    circles.push({ el: c, hv: hv });
+  });
+
+  var bC = document.getElementById('b-cust'), bR = document.getElementById('b-rev');
+  var out = document.getElementById('readout');
+
+  function setMode(rev) {
+    circles.forEach(function (o) {
+      o.el.setAttribute('r', rev ? (o.hv ? R_HV : R_REST) : R_CUST);
+    });
+    bC.setAttribute('aria-pressed', String(!rev));
+    bR.setAttribute('aria-pressed', String(rev));
+    out.innerHTML = rev
+      ? '<b>₹9.86 Cr</b> of ₹13.94 Cr revenue, <b>71%</b> of the total.'
+      : '<b>427</b> of 947 customers, <b>45%</b> of the base.';
+  }
+  bC.addEventListener('click', function () { setMode(false); });
+  bR.addEventListener('click', function () { setMode(true); });
+})();
+</script>
+</body>
+</html>
